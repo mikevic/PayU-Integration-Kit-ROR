@@ -23,9 +23,8 @@ group :assets do
 end
 
 gem 'jquery-rails', '2.2.1'
-# gem 'activemerchant', '1.36.0'
-# gem 'activemerchant', :path => "lib/active_merchant"
-gem 'offsite_payments'
+
+gem 'payuindia'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

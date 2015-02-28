@@ -1,5 +1,4 @@
 class CartsController < ApplicationController
-  include OffsitePayments::Integrations
 
   def index
     @carts = Cart.all
@@ -31,7 +30,7 @@ class CartsController < ApplicationController
   end
 
   def payu_return
-    notification = PayuIn.notification(request.query_string, options = {:merchant_id => $payu_merchant_id, :secret_key => $payu_secret_key, :params => params})
+    notification = PayuIndia::Notification.new(request.query_string, options = {:key => 'YOUR_KEY', :salt => 'YOUR_SALT', :params => params})
 
     @cart = Cart.find(notification.invoice) # notification.invoice is order id/cart id which you have submited from payment direction page.
 
@@ -45,7 +44,7 @@ class CartsController < ApplicationController
           redirect_to @order
         else          
           @cart.status = "failed"
-          render :text =>"Order Failed! MD5 Hash does not match!"
+          render :text => "Order Failed! #{notification.message}"
         end
       ensure
         @cart.save

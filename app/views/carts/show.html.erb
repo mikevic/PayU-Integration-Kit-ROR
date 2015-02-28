@@ -29,25 +29,13 @@
 
   Modify/Change below details as per your app.
 -->
-<% payment_service_for @cart.id, $payu_merchant_id,
-                                   :amount => @cart.total_price,
-                                   :service => :payu_in,                                   
-                                   :html => { :id => 'payment-form' } do |service| %>
-
-
-  <% for line_item in @cart.line_items %>
-    <% service.auto_settle :prod => line_item.product.id.to_s + ',' + line_item.quantity.to_s,
-                         :price => line_item.unit_price,
-                         :name => line_item.product.name,
-                         :description => line_item.product.description %>
-  <% end %>
-
-  <% service.productinfo 'book' %>  
-  <% service.customer :first_name => "Sandeep",
-      :last_name => "Kumar",
-      :phone => "1234567890",
-      :email => "sandeep.kumar@payu.in" %>
-  <% service.return_url 'http://localhost:3000/payu_callback' %>      
-
-  <input type=submit value=" Pay for your Order ">
-<% end %>
+<% payment_form_for_payu 'YOUR_KEY', 'YOUR_SALT',
+      :txnid => @cart.id,
+      :amount => @cart.total_price,
+      :productinfo => 'Book',
+      :firstname => 'Sandeep',
+      :email => 'sandeep.kumar@payu.in',
+      :phone => '1234567890',
+      :surl => 'http://localhost:3000/payu_callback',
+      :furl => 'http://localhost:3000/payu_callback',
+      :html => { :id => 'payment-form' } %>
