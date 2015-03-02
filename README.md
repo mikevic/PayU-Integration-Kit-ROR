@@ -11,10 +11,9 @@ This gem provides support for PayU payment gateway. (See [PayU.in](http://payu.i
   mode of payment as per your app env. Other than production, mode of payment is test.
 
 * Files to go through for workflow.
-
-  Gemfile (for adding payuindia gem)
-  app/controllers/CartsController.rb
-  app/views/carts/show.html.erb
+  - Gemfile (for adding payuindia gem)
+  - app/controllers/CartsController.rb
+  - app/views/carts/show.html.erb
 
 * Start Transacting
 
