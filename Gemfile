@@ -24,7 +24,8 @@ end
 
 gem 'jquery-rails', '2.2.1'
 
-gem 'payuindia', :git => 'git://github.com/payu-india/payuindia.git'
+# PayU India gem - To pay with PayU payment gateway
+gem 'payuindia', :git => 'git://github.com/payu-india/payuindia.git', :require => 'payu_india'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
