@@ -23,19 +23,19 @@
     </td>
   </tr>
 </table>
-<!-- 
+<!--
   if you have duplicate order id errors in testing mode.
-  @cart.id can be replaced with a random number for testing rand(36**10).to_s(36) 
+  @cart.id can be replaced with a random number for testing rand(36**10).to_s(36)
 
   Modify/Change below details as per your app.
 -->
 <% payment_form_for_payu 'YOUR_KEY', 'YOUR_SALT',
-      :txnid => @cart.id,
-      :amount => @cart.total_price,
-      :productinfo => 'Book',
-      :firstname => 'abc',
-      :email => 'abc@example.com',
-      :phone => '1234567890',
-      :surl => 'http://localhost:3000/payu_callback',
-      :furl => 'http://localhost:3000/payu_callback',
-      :html => { :id => 'payment-form' } %>
+      txnid: @cart.id,
+      amount: @cart.total_price,
+      productinfo: 'Book',
+      firstname: 'abc',
+      email: 'abc@example.com',
+      phone: '1234567890',
+      surl: 'http://localhost:3000/payu_callback',
+      furl: 'http://localhost:3000/payu_callback',
+      html: { id: 'payment-form' } %>
